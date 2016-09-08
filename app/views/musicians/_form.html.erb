@@ -1,0 +1,7 @@
+<%= render 'layouts/errors', :object => @musician %>
+
+<%= form_for @musician do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit %>
+<%end%>

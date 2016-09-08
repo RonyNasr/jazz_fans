@@ -1,0 +1,30 @@
+<h1><%= @musician.name %></h1>
+
+
+<% if @musician.albums.any? %>
+  <ul>
+    <% @musician.albums.each do |album| %>
+      <li><%= album.name %> |
+        <% if album.rating == 0 %>
+          <span>No ratings yet</span>
+        <% else %>
+        <span><%= album.rating %></span>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>
+    No albums yet! Add one!
+  </p>
+<% end %>
+
+<p><%= link_to 'New Album', new_album_path %></p>
+<br>
+<p><%= link_to "Return to Musicians", musicians_path %></p>
+<p><%= link_to "Edit", edit_musician_path(@musician) %></p>
+
+
+<p><%= link_to "Remove", musician_path(@musician), :data => {
+                                                  :confirm => "Are you sure?",
+                                                  :method => "delete" } %></p>
